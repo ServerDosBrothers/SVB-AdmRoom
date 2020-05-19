@@ -13,7 +13,9 @@ bool IsPlayer(int entity)
 void StartTouch(int entity, int other)
 {
 	if(IsPlayer(other)) {
-		ForcePlayerSuicide(other);
+		if(!(GetUserFlagBits(other) & (ADMFLAG_GENERIC))) {
+			ForcePlayerSuicide(other);
+		}
 	}
 }
 
